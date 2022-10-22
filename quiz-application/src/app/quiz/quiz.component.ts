@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { StudentType } from '../types/student';
+import { QuizType } from '../types/quiz';
 
 @Component({
-  selector: 'app-student',
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css']
+  selector: 'app-quiz',
+  templateUrl: './quiz.component.html',
+  styleUrls: ['./quiz.component.css']
 })
-export class StudentComponent implements OnInit {
-  @Input() student!:StudentType;
+export class QuizComponent implements OnInit {
+  @Input() quiz!:QuizType;
   constructor() { }
   @Input() prefix!:string;
   @Input() isOdd!:boolean;
@@ -18,4 +18,5 @@ export class StudentComponent implements OnInit {
   doUnClick():void{
     this.isClicked=!this.isClicked;
   }
+
 }

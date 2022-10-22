@@ -1,0 +1,12 @@
+<p [ngClass]="'title'">Lista quizów:</p>
+<ol>
+    <li *ngFor="let quiz of quizes; index as i; odd as isOdd; even as isEven" (click)="quizClicked(quiz,i)">
+        <span *ngIf="!quiz.name.endsWith('a')">
+            <app-quiz [isClicked]="whichClicked===i" prefix="Dane quizu:" [quiz]="quiz" [isOdd]="isOdd" [isEven]="isEven"></app-quiz>
+        </span>
+        <span *ngIf="quiz.name.endsWith('a')">
+            <app-quiz [isClicked]="whichClicked===i" prefix="Dane quizu:" [quiz]="quiz" [isOdd]="isOdd" [isEven]="isEven"></app-quiz>
+        </span>
+    </li>
+</ol>
+<div>Na dziś niestety koniec quizów;c</div>

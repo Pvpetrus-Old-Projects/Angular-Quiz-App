@@ -3,14 +3,14 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { StudentComponent } from './student/student.component';
-import { StudentsComponent } from './students/students.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { QuizesComponent } from './quizes/quizes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentComponent,
-    StudentsComponent
+    QuizComponent,
+    QuizesComponent
   ],
   imports: [
     BrowserModule,

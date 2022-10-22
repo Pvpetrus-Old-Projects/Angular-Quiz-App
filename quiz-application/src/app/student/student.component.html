@@ -1,3 +1,0 @@
-<div [class.oddRow]="isOdd" [class.evenRow]="isEven" (click)="doUnClick()">{{prefix}} {{student.name}} {{student.surname}} {{student.index_nr}}</div>
-
-<div *ngIf="isClicked"><input type="text" [(ngModel)]="student.name"/><input type="text" [(ngModel)]="student.surname"/><input type="number" [(ngModel)]="student.index_nr"/></div>
