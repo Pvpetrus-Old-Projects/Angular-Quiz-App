@@ -1,27 +1,29 @@
-# QuizApplication
+## Repository:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+git clone https://github.com/piotrsrednickiDS360/ProjektKomponenty.git
+cd ProjektKomponenty
 
-## Development server
+### 1. **GitHub** - branches structure:
+- 1.1 - piotr - production branch
+- 1.2 - feature - feature branch (name format: {*developer_name.title()*}_{*branch_developer_id*}_{*feature_description*} e.g. *Piotr_1_creating_component* 
+- 1.3 create new branch from dev branch: 
+  - git checkout -b brach_name
+- 1.4 rebase branch: 
+  - git fetch origin dev:dev
+  - git rebase dev
+  - code version selection
+  - git add .
+  - git rebase --continue
+  - code version selection
+  - git add .
+  - git push -f origin branch_name
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### 2. **Git Bash/ PyCharm** - commits:
+- 2.1 git add .
+- 2.2 git commit -m "commit description" # meaningful commit's description; "wip/./sth" not accepted!
+- 2.3 git push origin feature branch e.g. git push origin adam_1_pse_data_scrapper 
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### 3. **GitHub** - pull Requests:
+- 3.1. PR description as *bullet point list* required
+- 3.2. Assign *Piotr Średnicki* as **required reviewer**, rest developers as **optional reviewers**
+- 3.3. Merge from feature into dev accepted if PR receive approve vote and all comments/threads are resolved
