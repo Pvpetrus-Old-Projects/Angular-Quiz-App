@@ -1,0 +1,12 @@
+<p [ngClass]="'title'">Lista studentów:</p>
+<ol>
+    <li *ngFor="let student of students; index as i; odd as isOdd; even as isEven" (click)="studentClicked(student,i)">
+        <span *ngIf="!student.name.endsWith('a')">
+            <app-student [isClicked]="whichClicked===i" prefix="Dane studenta:" [student]="student" [isOdd]="isOdd" [isEven]="isEven"></app-student>
+        </span>
+        <span *ngIf="student.name.endsWith('a')">
+            <app-student [isClicked]="whichClicked===i" prefix="Dane studentki:" [student]="student" [isOdd]="isOdd" [isEven]="isEven"></app-student>
+        </span>
+    </li>
+</ol>
+<div>Koniec listy</div>
