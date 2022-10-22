@@ -11,16 +11,12 @@ export class QuizesComponent implements OnInit {
   quizes:QuizType[]=[];
   whichClicked:number=-1;
   constructor() { 
-    this.quizes.push({name:"Adam",surname:"Boro",index_nr:5435});
-    this.quizes.push({name:"Basia",surname:"Arecka",index_nr:1123});
-    this.quizes.push({name:"Aga",surname:"Serek",index_nr:6542});
+    this.quizes.push({category:"Zwierzęta",question:"Ile gatunków zwierząt jest na świecie?",answers:["a.","b.","c.","d."],right_answer_index:0});
+    this.quizes.push({category:"Natura",question:"Ile różnych gatunków grzybów jadalnych jest w Polsce?",answers:["a.","b.","c.","d."],right_answer_index:0});
+    this.quizes.push({category:"Polityka",question:"Jak ma na imię sławny polityk o nazwisku Korwin Mikke?",answers:["a.","b.","c.","d."],right_answer_index:0});
   }
 
   ngOnInit(): void {
-  }
-  quizClicked(quiz:QuizType,index:number):void{
-    console.log("quiz clicked",quiz);
-    this.whichClicked=index;
   }
 
 }

@@ -9,14 +9,26 @@ import { QuizType } from '../types/quiz';
 export class QuizComponent implements OnInit {
   @Input() quiz!:QuizType;
   constructor() { }
-  @Input() prefix!:string;
   @Input() isOdd!:boolean;
   @Input() isEven!:boolean;
   @Input() isClicked!:boolean;
+  answered!:boolean;
+  @Input() input_answer:number=-1;
+  isAnswerRight:boolean=false;
   ngOnInit(): void {
-  }
-  doUnClick():void{
-    this.isClicked=!this.isClicked;
-  }
 
+  }
+  onClick():void{
+    if(this.input_answer!=-1)
+    {
+      this.answered=true;
+      if(this.input_answer==this.quiz.right_answer_index)
+      {
+        this.isAnswerRight=true;
+      }
+      else{
+        this.isAnswerRight=false;
+      }
+    }
+  }
 }

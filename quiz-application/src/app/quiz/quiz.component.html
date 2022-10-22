@@ -1,3 +1,17 @@
-<div [class.oddRow]="isOdd" [class.evenRow]="isEven" (click)="doUnClick()">{{prefix}} {{quiz.name}} {{quiz.surname}} {{quiz.index_nr}}</div>
-
-<div *ngIf="isClicked"><input type="text" [(ngModel)]="quiz.name"/><input type="text" [(ngModel)]="quiz.surname"/><input type="number" [(ngModel)]="quiz.index_nr"/></div>
+<div [class.oddRow]="isOdd" [class.evenRow]="isEven" > {{quiz.category}} {{quiz.question}}</div>
+<form>
+    <div *ngFor="let answer of quiz.answers;let i=index">
+        <div><input type="radio" name="answerInput" (click)="input_answer=i">{{quiz.answers[i]}}</div>
+    </div>
+    <div *ngIf="answered">
+        <div *ngIf="isAnswerRight">
+            <div>Brawo, odpowiedź prawidłowa!</div>
+        </div>
+        <div *ngIf="!isAnswerRight">
+            <div>Przykro mi, ale odpowiedź nie jest poprawna:/</div>
+        </div>
+    </div>
+    <div *ngIf="!answered">
+        <input type="submit" (click)="onClick()"/>
+    </div>
+</form>

@@ -1,5 +1,6 @@
 export type QuizType={
-    name: string;
-    surname: string;
-    index_nr: number;
+    category: string;
+    question: string;
+    answers: string[];
+    right_answer_index:number;
 }
