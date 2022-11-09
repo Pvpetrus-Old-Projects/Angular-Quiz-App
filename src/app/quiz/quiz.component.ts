@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { QuizType } from '../types/quiz';
+import { QuizClass, QuizType } from '../types/quiz';
 
 @Component({
   selector: 'app-quiz',
@@ -7,7 +7,7 @@ import { QuizType } from '../types/quiz';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
-  @Input() quiz!:QuizType;
+  @Input() quiz!:QuizClass;
   constructor() { }
   @Input() isOdd!:boolean;
   @Input() isEven!:boolean;

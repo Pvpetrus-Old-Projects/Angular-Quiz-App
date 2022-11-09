@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizType } from '../types/quiz';
+import { QuizClass, QuizType } from '../types/quiz';
 
 @Component({
   selector: 'app-quizes',
@@ -8,12 +8,12 @@ import { QuizType } from '../types/quiz';
 })
 export class QuizesComponent implements OnInit {
 
-  quizes:QuizType[]=[];
+  quizes:QuizClass[]=[];
   whichClicked:number=-1;
-  constructor() { 
-    this.quizes.push({category:"Zwierzęta",question:"Ile gatunków zwierząt jest na świecie?",answers:["a.","b.","c.","d."],right_answer_index:0});
-    this.quizes.push({category:"Natura",question:"Ile różnych gatunków grzybów jadalnych jest w Polsce?",answers:["a.","b.","c.","d."],right_answer_index:0});
-    this.quizes.push({category:"Polityka",question:"Jak ma na imię sławny polityk o nazwisku Korwin Mikke?",answers:["a.","b.","c.","d."],right_answer_index:0});
+  constructor() {
+    this.quizes.push(new QuizClass("Zwierzęta","Ile gatunków zwierząt jest na świecie?",["a.","b.","c.","d."],0));
+    this.quizes.push(new QuizClass("Natura","Ile różnych gatunków grzybów jadalnych jest w Polsce?",["a.","b.","c.","d."],0));
+    this.quizes.push(new QuizClass("Polityka","Jak ma na imię sławny polityk o nazwisku Korwin Mikke?",["a.","b.","c.","d."],0));
   }
 
   ngOnInit(): void {
