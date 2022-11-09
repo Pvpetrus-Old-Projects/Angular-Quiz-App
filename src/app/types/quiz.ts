@@ -6,10 +6,10 @@ export type QuizType={
 }
 
 export class QuizClass{
-  public category: string;
-  public question: string;
-  public answers: string[];
-  public right_answer_index:number;
+  category: string;
+  question: string;
+  answers: string[];
+  right_answer_index:number;
 
   constructor(category:string, question:string, answers:string[], right_answer_index: number){
     this.category = category;
