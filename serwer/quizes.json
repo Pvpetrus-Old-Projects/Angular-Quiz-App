@@ -1,0 +1,22 @@
+[{
+        "index_nr": 1,
+        "category": "Zwierzęta",
+        "question": "Ile gatunków zwierząt jest na świecie?",
+        "answers": ["a.","b.","c.","d."],
+        "right_answer_index": 0
+    },
+    {
+        "index_nr": 2,
+        "category": "Natura",
+        "question": "Ile różnych gatunków grzybów jadalnych jest w Polsce?",
+        "answers": ["a.","b.","c.","d."],
+        "right_answer_index": 0
+    },
+    {
+        "index_nr": 3,
+        "category": "Polityka",
+        "question": "Jak ma na imię sławny polityk o nazwisku Korwin Mikke?",
+        "answers": ["a.","b.","c.","d."],
+        "right_answer_index": 0
+    }
+]
