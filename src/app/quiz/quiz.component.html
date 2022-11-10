@@ -1,7 +1,7 @@
-<div [class.oddRow]="isOdd" [class.evenRow]="isEven" > {{quiz.category}} {{quiz.question}}</div>
+<div [class.oddRow]="isOdd" [class.evenRow]="isEven" > {{quiz.Category}} {{quiz.Question}}</div>
 <form>
-    <div *ngFor="let answer of quiz.answers;let i=index">
-        <div><input type="radio" name="answerInput" (click)="input_answer=i">{{quiz.answers[i]}}</div>
+    <div *ngFor="let answer of quiz.Answers;let i=index">
+        <div><input type="radio" name="answerInput" (click)="input_answer=i">{{quiz.Answers[i]}}</div>
     </div>
     <div *ngIf="answered">
         <div *ngIf="isAnswerRight">
@@ -15,3 +15,8 @@
         <input type="submit" (click)="onClick()"/>
     </div>
 </form>
+
+<button (click)="clickOnEdit()">Edytuj</button>
+<app-edit *ngIf="editButton==true" [quizForEdit]="quiz" (editedQuiz)="editQuiz($event)"></app-edit>
+<button (click)="clickOnDelete()">Usuń</button>
+<app-delete *ngIf="deleteButton==true" (deleteDecision)="deleteQuiz($event)"></app-delete><br>

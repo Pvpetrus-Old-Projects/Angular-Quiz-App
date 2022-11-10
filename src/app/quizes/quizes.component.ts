@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizType } from '../types/quiz';
+import { QuizesHttpClientService } from '../quizes-http-client.service';
+import { QuizesService } from '../quizes.service';
+import { QuizClass, QuizType } from '../types/quiz';
 
 @Component({
   selector: 'app-quizes',
@@ -7,16 +9,39 @@ import { QuizType } from '../types/quiz';
   styleUrls: ['./quizes.component.css']
 })
 export class QuizesComponent implements OnInit {
-
-  quizes:QuizType[]=[];
-  whichClicked:number=-1;
-  constructor() { 
-    this.quizes.push({category:"Zwierzęta",question:"Ile gatunków zwierząt jest na świecie?",answers:["a.","b.","c.","d."],right_answer_index:0});
-    this.quizes.push({category:"Natura",question:"Ile różnych gatunków grzybów jadalnych jest w Polsce?",answers:["a.","b.","c.","d."],right_answer_index:0});
-    this.quizes.push({category:"Polityka",question:"Jak ma na imię sławny polityk o nazwisku Korwin Mikke?",answers:["a.","b.","c.","d."],right_answer_index:0});
+  quizes:QuizClass[]=[];
+  createButton: boolean = false;
+  constructor(private quizesService: QuizesService, private quizesHttpService: QuizesHttpClientService) {
+    //this.quizes = quizesService.Quizes;
+    //quizesService.QuizesAsync.subscribe(data => this.quizes=data);
+    quizesHttpService.getQuizes().subscribe(data => this.quizes=data);
   }
 
   ngOnInit(): void {
+  }
+
+  editQuiz(data:{quiz:QuizClass,which:number}){
+    this.quizesHttpService.editQuiz(data.quiz).subscribe(ret=>  {
+      console.log("ret",ret);
+      this.quizes[data.which]=data.quiz;}
+      );
+  }
+  deleteQuiz(index: number){
+    this.quizesHttpService.deleteQuiz(index).subscribe(ret=>  {
+      console.log("ret",ret);
+      this.quizes.splice(index, 1);}
+      );
+  }
+
+  addClicked(){
+    this.createButton=true;
+  }
+  addQuiz(quiz: QuizClass){
+    this.createButton=false;
+    this.quizesHttpService.addQuiz(quiz).subscribe(ret=>  {
+      console.log("ret",ret);
+      this.quizes.push(quiz);}
+      );
   }
 
 }

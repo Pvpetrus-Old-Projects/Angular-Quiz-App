@@ -1,0 +1,10 @@
+<p>Dodawanie quizu</p>
+
+Kategoria: <input type="text" [(ngModel)]="quizToAdd.Category"/><br>
+Pytanie: <input type="text" [(ngModel)]="quizToAdd.Question"/><br>
+Odpowiedź 1: <input type="text" [(ngModel)]="answers[0]"/><br>
+Odpowiedź 2: <input type="text" [(ngModel)]="answers[1]"/><br>
+Odpowiedź 3: <input type="text" [(ngModel)]="answers[2]"/><br>
+Odpowiedź 4: <input type="text" [(ngModel)]="answers[3]"/><br>
+Poprawna odpowiedź: <input type="number" [(ngModel)]="quizToAdd.Right_answer_index"/><br>
+<button (click)="add()">Zatwierdz</button>
