@@ -7,22 +7,15 @@ export type QuizType={
 }
 
 export class QuizClass{
-  index_nr:number
-  category: string;
-  question: string;
-  answers: string[];
-  right_answer_index:number;
 
-  constructor(index_nr:number, category:string, question:string, answers:string[], right_answer_index: number){
-    this.index_nr = index_nr;
-    this.category = category;
-    this.question = question;
-    this.answers = answers;
-    this.right_answer_index = right_answer_index;
-  }
+  constructor(private index_nr:number, private category:string, private question:string,private answers:string[], private right_answer_index: number){}
 
   get Index_nr():number{
     return this.index_nr;
+  }
+
+  set Index_nr(index_nr:number){
+    this.index_nr=index_nr;
   }
 
   get Category():string{

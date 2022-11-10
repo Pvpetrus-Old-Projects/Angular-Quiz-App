@@ -30,19 +30,35 @@ export class QuizesHttpClientService {
   }
 
   editQuiz(quiz: QuizClass): Observable<QuizClass> {
+    console.log("edited quiz: " + quiz.Index_nr);
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    // const QuizObj={name: quiz.Name, surname: quiz.Surname, index_nr: quiz.Index_nr, dataUrodzenia: Quiz.dataUrodzenia};
-    // if((Quiz as OutstandingQuizClass).stypendium!==undefined) Object.assign(QuizObj, {stypendium: (Quiz as OutstandingQuizClass).stypendium});
-    // console.log("edit",QuizObj);
     return this.http.put<QuizClass>(this.url+'/'+ quiz.Index_nr, quiz, httpOptions)
       .pipe(
-        // tu ładnie konwersja działa, niepotrzebne
-        // map((Quizret: Quiz)=>{
-        // if(Quizret.stypendium) return new OutstandingQuizClass(Quizret.name,Quizret.surname,Quizret.index_nr,Quizret.stypendium,Quizret.dataUrodzenia);
-        // return new QuizClass(Quizret.name,Quizret.surname,Quizret.index_nr,Quizret.dataUrodzenia);}),
         catchError(this.handleError<QuizClass>('editQuiz'))
+      );
+  }
+
+  deleteQuiz(index: number): Observable<any> {
+    console.log("deleted quiz: " + index);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.delete<QuizClass>(this.url+'/'+ index, httpOptions)
+      .pipe(
+        catchError(this.handleError<QuizClass>('deleteQuiz'))
+      );
+  }
+
+  addQuiz(quiz: QuizClass): Observable<QuizClass> {
+    console.log("added quiz: " + quiz.Index_nr);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.post<QuizClass>(this.url, quiz, httpOptions)
+      .pipe(
+        catchError(this.handleError<QuizClass>('addQuiz'))
       );
   }
 
