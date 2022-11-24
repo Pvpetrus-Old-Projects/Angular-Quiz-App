@@ -27,7 +27,8 @@ export class QuizesComponent implements OnInit {
       );
   }
   deleteQuiz(index: number){
-    this.quizesHttpService.deleteQuiz(index).subscribe(ret=>  {
+    let ind = this.quizes[index].Index_nr;
+    this.quizesHttpService.deleteQuiz(ind).subscribe(ret=>  {
       console.log("ret",ret);
       this.quizes.splice(index, 1);}
       );
