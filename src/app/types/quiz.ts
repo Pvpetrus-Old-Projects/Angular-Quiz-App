@@ -4,11 +4,12 @@ export type QuizType={
   question: string;
   answers: string[];
   right_answer_index:number;
+  creation_date: Date
 }
 
 export class QuizClass{
 
-  constructor(private index_nr:number, private category:string, private question:string,private answers:string[], private right_answer_index: number){}
+  constructor(private index_nr:number, private category:string, private question:string,private answers:string[], private right_answer_index:number, private creation_date:Date){}
 
   get Index_nr():number{
     return this.index_nr;
@@ -48,5 +49,13 @@ export class QuizClass{
 
   set Right_answer_index(right_answer_index:number){
     this.right_answer_index=right_answer_index;
+  }
+
+  get Creation_date():Date{
+    return this.creation_date;
+  }
+
+  set Creation_date(creation_date:Date){
+    this.creation_date=creation_date;
   }
 }

@@ -1,4 +1,5 @@
 <div [class.oddRow]="isOdd" [class.evenRow]="isEven" > {{quiz.Category}} {{quiz.Question}}</div>
+<div [class.oddRow]="isOdd" [class.evenRow]="isEven" >Data utworzenia: {{quiz.Creation_date}}</div>
 <form>
     <div *ngFor="let answer of quiz.Answers;let i=index">
         <div><input type="radio" name="answerInput" (click)="input_answer=i">{{quiz.Answers[i]}}</div>

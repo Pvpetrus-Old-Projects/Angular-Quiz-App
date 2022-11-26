@@ -56,7 +56,7 @@ export class EditComponent implements OnInit {
     {
       this.editedQuiz.emit(new QuizClass(this.quizForEdit.Index_nr,this.formModel.value.category,this.formModel.value.question,
         [this.formModel.value.answer1,this.formModel.value.answer2,this.formModel.value.answer3,
-        this.formModel.value.answer4],this.formModel.value.rightAnswer));
+        this.formModel.value.answer4],this.formModel.value.rightAnswer,this.quizForEdit.Creation_date));
     }
   }
 

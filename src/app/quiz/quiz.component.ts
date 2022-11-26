@@ -12,8 +12,8 @@ export class QuizComponent implements OnInit {
   @Input() isOdd!:boolean;
   @Input() isEven!:boolean;
   @Input() which!:number;
-  quizForEdit:QuizClass = new QuizClass(-1,'','',[],-1);
-  quizForDelete:QuizClass = new QuizClass(-1,'','',[],-1);
+  quizForEdit:QuizClass = new QuizClass(-1,'','',[],-1,new Date());
+  quizForDelete:QuizClass = new QuizClass(-1,'','',[],-1,new Date());
   @Output() doEditInParent: EventEmitter<{quiz:QuizClass,which:number}>=new EventEmitter();
   @Output() doDeleteInParent: EventEmitter<number>=new EventEmitter<number>();
   answered!:boolean;
@@ -30,7 +30,7 @@ export class QuizComponent implements OnInit {
     if(this.input_answer!=-1)
     {
       this.answered=true;
-      if(this.input_answer==this.quiz.Right_answer_index)
+      if(this.input_answer==(this.quiz.Right_answer_index-1))
       {
         this.isAnswerRight=true;
       }

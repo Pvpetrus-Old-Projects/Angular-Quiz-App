@@ -21,8 +21,9 @@ export class QuizesHttpClientService {
           category:string,
           question: string,
           answers: string[],
-          right_answer_index: number}[])=>quizes.map(quiz=>{
-            return new QuizClass(quiz.index_nr,quiz.category,quiz.question,quiz.answers,quiz.right_answer_index);})
+          right_answer_index: number,
+          creation_date: Date}[])=>quizes.map(quiz=>{
+            return new QuizClass(quiz.index_nr,quiz.category,quiz.question,quiz.answers,quiz.right_answer_index,quiz.creation_date);})
         ),
         catchError(this.handleError<QuizClass[]>('getQuizes', []))
 
