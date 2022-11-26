@@ -12,7 +12,6 @@ import { QuizComponent } from '../quiz/quiz.component';
 })
 export class QuizesComponent implements OnInit {
   quizes:QuizClass[]=[];
-  createButton: boolean = false;
   constructor(private quizesService: QuizesService, private quizesHttpService: QuizesHttpClientService) {
     //this.quizes = quizesService.Quizes;
     //quizesService.QuizesAsync.subscribe(data => this.quizes=data);
@@ -35,16 +34,4 @@ export class QuizesComponent implements OnInit {
       this.quizes.splice(index, 1);}
       );
   }
-
-  addClicked(){
-    this.createButton=true;
-  }
-  addQuiz(quiz: QuizClass){
-    this.createButton=false;
-    this.quizesHttpService.addQuiz(quiz).subscribe(ret=>  {
-      console.log("ret",ret);
-      this.quizes.push(quiz);}
-      );
-  }
-
 }
