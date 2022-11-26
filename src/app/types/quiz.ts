@@ -1,15 +1,19 @@
 export type QuizType={
-  index_nr:number
+  index_nr:number;
   category: string;
   question: string;
   answers: string[];
   right_answer_index:number;
-  creation_date: Date
+  creation_date: Date;
+  author?: string;
 }
 
 export class QuizClass{
 
-  constructor(private index_nr:number, private category:string, private question:string,private answers:string[], private right_answer_index:number, private creation_date:Date){}
+  constructor(index_nr:number, category:string, question:string, answers:string[], right_answer_index:number, creation_date:Date);
+  constructor(index_nr:number, category:string, question:string, answers:string[], right_answer_index:number, creation_date:Date, author?:string);
+
+  constructor(private index_nr:number, private category:string, private question:string,private answers:string[], private right_answer_index:number, private creation_date:Date, private author?:string){}
 
   get Index_nr():number{
     return this.index_nr;
@@ -57,5 +61,14 @@ export class QuizClass{
 
   set Creation_date(creation_date:Date){
     this.creation_date=creation_date;
+  }
+
+  get Author():string{
+    if(this.author) return this.author;
+    else return "anonim"
+  }
+
+  set Author(author:string){
+    this.author=author;
   }
 }

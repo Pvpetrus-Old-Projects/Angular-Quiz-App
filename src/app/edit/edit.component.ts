@@ -14,11 +14,14 @@ export class EditComponent implements OnInit {
   @Input() quizForEdit_answers!: string[];
   @Output() editedQuiz: EventEmitter<QuizClass>=new EventEmitter<QuizClass>();
   formModel!: FormGroup;
+  author!:string;
   constructor() {
     console.log("Powstał właśnie formularz")
    }
   ngOnInit(): void {
     this.quizForEdit_answers = this.quizForEdit.Answers;
+    if(!(this.quizForEdit.Author=="anonim")) this.author = this.quizForEdit.Author;
+    //else this.author = "";
     this.formModel=new FormGroup({
       category: new FormControl(this.quizForEdit.Category,[Validators.required]),
       question: new FormControl(this.quizForEdit.Question,[Validators.required,questionValidator]),
@@ -54,9 +57,10 @@ export class EditComponent implements OnInit {
   hide(): void{
     if(this.formModel.valid)
     {
+
       this.editedQuiz.emit(new QuizClass(this.quizForEdit.Index_nr,this.formModel.value.category,this.formModel.value.question,
         [this.formModel.value.answer1,this.formModel.value.answer2,this.formModel.value.answer3,
-        this.formModel.value.answer4],this.formModel.value.rightAnswer,this.quizForEdit.Creation_date));
+        this.formModel.value.answer4],this.formModel.value.rightAnswer,this.quizForEdit.Creation_date,this.author));
     }
   }
 

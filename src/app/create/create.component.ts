@@ -13,11 +13,12 @@ export class CreateComponent implements OnInit {
   quizToAdd!: QuizClass;
   quizToAdd2!: QuizClass;
   answers!: string[];
+  author!: string;
   createButton: boolean = false;
   last_id: number = 0;
 
   constructor(private quizesHttpService: QuizesHttpClientService) {
-    this.quizToAdd = new QuizClass(-1,'','',[],-1,new Date());
+    this.quizToAdd = new QuizClass(-1,'','',[],0,new Date());
     this.answers = ['','','',''];
     quizesHttpService.getQuizes().subscribe(data => this.quizes=data);
   }
@@ -30,7 +31,8 @@ export class CreateComponent implements OnInit {
       if(q.Index_nr > this.last_id) this.last_id = q.Index_nr;
     }
 
-    this.quizToAdd2 = new QuizClass(this.last_id+1,this.quizToAdd.Category,this.quizToAdd.Question,this.answers,this.quizToAdd.Right_answer_index,new Date());
+    if(this.author) this.quizToAdd2 = new QuizClass(this.last_id+1,this.quizToAdd.Category,this.quizToAdd.Question,this.answers,this.quizToAdd.Right_answer_index,new Date(), this.author);
+    else this.quizToAdd2 = new QuizClass(this.last_id+1,this.quizToAdd.Category,this.quizToAdd.Question,this.answers,this.quizToAdd.Right_answer_index,new Date());
     this.quizesHttpService.addQuiz(this.quizToAdd2).subscribe(ret=>  {
       console.log("ret",ret);
       this.quizes.push(this.quizToAdd2);}
@@ -40,6 +42,7 @@ export class CreateComponent implements OnInit {
     this.quizToAdd.Question = '';
     this.quizToAdd.Answers = ['','','',''];
     this.answers = ['','','',''];
-    this.quizToAdd.Right_answer_index = -1;
+    this.quizToAdd.Right_answer_index = 0;
+    if(this.author) this.author="";
   }
 }
