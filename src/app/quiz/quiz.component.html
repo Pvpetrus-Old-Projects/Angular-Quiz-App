@@ -1,5 +1,5 @@
 <div [class.oddRow]="isOdd" [class.evenRow]="isEven" > {{quiz.Category}} {{quiz.Question}}</div>
-<div [class.oddRow]="isOdd" [class.evenRow]="isEven" >Data utworzenia: {{quiz.Creation_date}}</div>
+<div [class.oddRow]="isOdd" [class.evenRow]="isEven" > Data utworzenia: {{quiz.Creation_date | date:"d M yyyy H mm EEEE" | showDate}}</div>
 <div [class.oddRow]="isOdd" [class.evenRow]="isEven" >Autor: {{quiz.Author}}</div>
 <form>
     <div *ngFor="let answer of quiz.Answers;let i=index">

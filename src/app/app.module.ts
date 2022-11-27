@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule,FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -9,6 +9,7 @@ import { DeleteComponent } from './delete/delete.component';
 import { EditComponent } from './edit/edit.component';
 import { CreateComponent } from './create/create.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ShowDatePipe } from './show-date.pipe';
 
 const routes: Routes = [
   {path:'quizes',component:QuizesComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
     QuizesComponent,
     DeleteComponent,
     EditComponent,
-    CreateComponent
+    CreateComponent,
+    ShowDatePipe
   ],
   imports: [
     BrowserModule,
