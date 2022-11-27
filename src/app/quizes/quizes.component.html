@@ -1,6 +1,11 @@
+<div><br>
+  <label>Wyszukaj po nazwie kategorii
+    <input type="text" [(ngModel)]="searchQuery">
+  </label>
+</div>
 <p [ngClass]="'title'">Lista quizów:</p>
 <ol>
-    <li *ngFor="let quiz of quizes; index as i; odd as isOdd; even as isEven">
+    <li *ngFor="let quiz of (quizes | search:searchQuery); index as i; odd as isOdd; even as isEven">
             <app-quiz [quiz]="quiz" [isOdd]="isOdd" [isEven]="isEven" (doEditInParent)="editQuiz($event)" [which]="i" (doDeleteInParent)="deleteQuiz($event)"></app-quiz>
     </li>
 </ol>

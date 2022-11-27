@@ -12,6 +12,7 @@ export class QuizComponent implements OnInit {
   @Input() isOdd!:boolean;
   @Input() isEven!:boolean;
   @Input() which!:number;
+  @Input() searchQuery!:string;
   quizForEdit:QuizClass = new QuizClass(-1,'','',[],-1,new Date());
   quizForDelete:QuizClass = new QuizClass(-1,'','',[],-1,new Date());
   @Output() doEditInParent: EventEmitter<{quiz:QuizClass,which:number}>=new EventEmitter();

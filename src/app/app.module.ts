@@ -10,6 +10,7 @@ import { EditComponent } from './edit/edit.component';
 import { CreateComponent } from './create/create.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ShowDatePipe } from './show-date.pipe';
+import { SearchPipe } from './search.pipe';
 
 const routes: Routes = [
   {path:'quizes',component:QuizesComponent},
@@ -26,7 +27,8 @@ const routes: Routes = [
     DeleteComponent,
     EditComponent,
     CreateComponent,
-    ShowDatePipe
+    ShowDatePipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

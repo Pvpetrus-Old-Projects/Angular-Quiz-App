@@ -12,6 +12,7 @@ import { QuizComponent } from '../quiz/quiz.component';
 })
 export class QuizesComponent implements OnInit {
   quizes:QuizClass[]=[];
+  searchQuery!: string;
   constructor(private quizesService: QuizesService, private quizesHttpService: QuizesHttpClientService) {
     //this.quizes = quizesService.Quizes;
     //quizesService.QuizesAsync.subscribe(data => this.quizes=data);
@@ -19,6 +20,7 @@ export class QuizesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.searchQuery = '';
   }
 
   editQuiz(data:{quiz:QuizClass,which:number}){
