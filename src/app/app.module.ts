@@ -11,11 +11,13 @@ import { CreateComponent } from './create/create.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ShowDatePipe } from './show-date.pipe';
 import { SearchPipe } from './search.pipe';
+import { SolveQuizComponent } from './solve-quiz/solve-quiz.component';
 
 const routes: Routes = [
   {path:'quizes',component:QuizesComponent},
   {path:'add',component:CreateComponent},
   {path:'quiz/:index',component:QuizComponent},
+  {path:'solve', component:SolveQuizComponent},
   {path:'', redirectTo:'/quizes',pathMatch:'full'}
 ]
 
@@ -28,7 +30,8 @@ const routes: Routes = [
     EditComponent,
     CreateComponent,
     ShowDatePipe,
-    SearchPipe
+    SearchPipe,
+    SolveQuizComponent
   ],
   imports: [
     BrowserModule,

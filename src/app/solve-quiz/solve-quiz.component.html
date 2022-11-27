@@ -1,0 +1,22 @@
+<p class="guideLine">
+    Wybierz kategorię pytań w quizie. Po wybraniu kategorii zostanie ci wyświetlony quiz składający się z 10 pytań
+    z danej kategorii.
+</p><br><br>
+<form [formGroup]="categoryForm" (ngSubmit)="submit($event)">
+    <label for="category">Kategoria pytań: </label>
+    <select id="category" formControlName="category">
+        <option *ngFor="let category of categories" [ngValue]="category">{{category}}</option>
+    </select><br><br>
+    <button type="submit">Rozwiąż quiz</button>
+</form>
+<div *ngIf="solveClicked">
+    <p>{{quizQuestions[currentIndex].Question}}</p>
+    <div *ngFor="let answer of quizQuestions[currentIndex].Answers;let i=index">
+        <input type="radio" name="questionAnswer" value="answer" (click)="answerChosen=i+1">{{answer}}
+    </div><br>
+    <button *ngIf="endOfQuiz===false && lastQuestion===false" (click)='loadNextQuestion()'>Kolejne pytanie</button>
+    <button *ngIf="lastQuestion===true" (click)='loadNextQuestion()'>Zakończ quiz</button>
+</div>
+<div *ngIf="endOfQuiz===true">
+    <p class="score">Twój wynik to {{score}}/{{quizQuestions.length}}</p>
+</div>
