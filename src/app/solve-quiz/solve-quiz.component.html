@@ -6,13 +6,14 @@
     <label for="category">Kategoria pytań: </label>
     <select id="category" formControlName="category">
         <option *ngFor="let category of categories" [ngValue]="category">{{category}}</option>
-    </select><br><br>
+    </select>
+    <div *ngIf="category?.errors?.['required']" style="color:red"> Category is required</div><br><br>
     <button type="submit">Rozwiąż quiz</button>
 </form>
 <div *ngIf="solveClicked">
     <p>{{quizQuestions[currentIndex].Question}}</p>
     <div *ngFor="let answer of quizQuestions[currentIndex].Answers;let i=index">
-        <input type="radio" name="questionAnswer" value="answer" (click)="answerChosen=i+1">{{answer}}
+        <input type="radio" name="questionAnswer" value="answer" (click)="answerChosen=i+1">{{answer|lowercase}}
     </div><br>
     <button *ngIf="endOfQuiz===false && lastQuestion===false" (click)='loadNextQuestion()'>Kolejne pytanie</button>
     <button *ngIf="lastQuestion===true" (click)='loadNextQuestion()'>Zakończ quiz</button>

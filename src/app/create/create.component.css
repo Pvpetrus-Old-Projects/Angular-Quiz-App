@@ -4,3 +4,6 @@ p{
   font-size:medium;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+input{
+  width:25vh;
+}

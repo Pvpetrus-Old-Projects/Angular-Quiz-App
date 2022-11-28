@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { filter, last } from 'rxjs';
 import { QuizesHttpClientService } from '../quizes-http-client.service';
 import { QuizClass } from '../types/quiz';
@@ -35,9 +35,12 @@ export class SolveQuizComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryForm=this.fb.group({
-      category:[null]
+      category:new FormControl('Matematyka', [Validators.required])
     });
     this.httpService.getQuizes().subscribe(data => this.questions=data);
+  }
+  get category(){
+    return this.categoryForm.get('category');
   }
   chooseQuestions(questions: QuizClass[]): QuizClass[]{
     const result:QuizClass[]=[];

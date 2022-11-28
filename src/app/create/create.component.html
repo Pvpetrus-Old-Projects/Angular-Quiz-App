@@ -1,11 +1,23 @@
 <p>Dodawanie quizu</p>
 
-Kategoria: <input type="text" [(ngModel)]="quizToAdd.Category"/><br>
-Pytanie: <input type="text" [(ngModel)]="quizToAdd.Question"/><br>
-Odpowiedź 1: <input type="text" [(ngModel)]="answers[0]"/><br>
-Odpowiedź 2: <input type="text" [(ngModel)]="answers[1]"/><br>
-Odpowiedź 3: <input type="text" [(ngModel)]="answers[2]"/><br>
-Odpowiedź 4: <input type="text" [(ngModel)]="answers[3]"/><br>
-Poprawna odpowiedź: <input type="number" [(ngModel)]="quizToAdd.Right_answer_index"/><br>
-Autor: <input type="text" [(ngModel)]="author"/><br>
-<button (click)="add()">Zatwierdz</button>
+<form [formGroup]="createForm" (ngSubmit)="add($event)">
+    Kategoria: <input type="text" formControlName="category" #input/><br>
+    Pytanie: <input type="text" formControlName="question" #input/><br>
+    Odpowiedź 1: <input type="text" formControlName="answer1" #input/><br>
+    Odpowiedź 2: <input type="text" formControlName="answer2" #input/><br>
+    Odpowiedź 3: <input type="text" formControlName="answer3" #input/><br>
+    Odpowiedź 4: <input type="text" formControlName="answer4" #input/><br>
+    Poprawna odpowiedź: <input type="number" formControlName="correctAnswer" #input/><br>
+    Autor: <input type="text" formControlName="author" #input/><br>
+    <button *ngIf="this.createForm.valid" type="submit">Zatwierdz</button>
+    <button *ngIf="!this.createForm.valid" type="submit" disabled>Zatwierdz</button>
+    <div *ngIf="category?.errors?.['required']" style="color:red"> Category is required</div>
+    <div *ngIf="question?.errors?.['required']" style="color:red"> Question is required</div>
+    <div *ngIf="question?.errors?.['onlyLetters']" style="color:red"> Questionmark is required</div>
+    <div *ngIf="answer1?.errors?.['required']" style="color:red"> Answer 1 is required</div>
+    <div *ngIf="answer2?.errors?.['required']" style="color:red"> Answer 2 is required</div>
+    <div *ngIf="answer3?.errors?.['required']" style="color:red"> Answer 3 is required</div>
+    <div *ngIf="answer4?.errors?.['required']" style="color:red"> Answer 4 is required</div>
+    <div *ngIf="correctAnswer?.errors?.['required']" style="color:red"> Correct answer is required</div>
+</form>
+ 
